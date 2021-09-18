@@ -1,0 +1,16 @@
+{
+    "version": "2.0",
+    "app_name": "chess",
+    "stages": {
+        "dev": {
+            "tags": {
+                "project": "chess"
+            }
+        },
+        "active": {
+            "tags": {
+                "project": "chess"
+            }
+        }
+    }
+}

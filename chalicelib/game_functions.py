@@ -2,7 +2,7 @@ import json
 
 from chalice import Blueprint
 
-from chalicelib.app_resources import connections, game_moves_table
+from chalicelib.app_resources import connections, game_moves_table, game_statuses_table
 
 game_functions = Blueprint(__name__)
 
@@ -37,10 +37,13 @@ def make_move(event, context):
         )
         return {}
 
-    game = game_moves_table.get_item(Key={"game": game_id}).get("Item")
+    game = game_statuses_table.get_item(Key={"game": game_id}).get("Item")
 
     if game is None:
-
+        connections.post_to_connection(
+            Data=json.dumps({"error": "Bad request"}).encode("utf-8"),
+            ConnectionId=connection,
+        )
         return {}
 
     response = {

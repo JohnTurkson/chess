@@ -7,8 +7,8 @@ connections = boto3.client(
     endpoint_url="",
 )
 
-connections_table = dynamodb.Table("chess-active-player_connections")
-connections_by_user_index = "chess-active-player_connections-by_user"
+connections_table = dynamodb.Table("chess-active-user_connections")
+connections_by_user_index = "chess-active-user_connections-by_user"
 
 game_moves_table = dynamodb.Table("chess-active-game_moves")
 game_statuses_table = dynamodb.Table("chess-active-game_statuses")
